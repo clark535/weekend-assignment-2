@@ -14,25 +14,40 @@ $(document).on('click', '#additionButton', addFunc);
 $(document).on('click', '#subtractionButton', subFunc);
 $(document).on('click', '#multiplicationButton', multiFunc);
 $(document).on('click', '#divisionButton', divisionFunc);
+$(document).on('click', '#calculateButton', postIt);
 $('#clearButton').on('click', clearFunc);
+
+function postIt() {
+    //inputNumbers();
+   $.ajax({
+       method: 'POST',
+       url: '/calc',
+       data: {total_object: inputObjects},
+       success: function(response){
+           console.log('Finally in the Post', inputObjects)
+            $('#equalsBox').html('Equals: ' + response);
+       }
+   });
+}
 
 function inputNumbers() {
     inputObjects.x = $('#inputOne').val();
     inputObjects.y = $('#inputTwo').val();
+    // postIt();
 }
 
 function addFunc() {
     console.log(inputObjects)
    inputObjects.type = "add";
    inputNumbers();
-   postIt();
+//    postIt();
    }
    
 function subFunc() {
     console.log(inputObjects)
    inputObjects.type = "subtract";
    inputNumbers();
-   postIt();
+//    postIt();
    }
    
 
@@ -40,14 +55,14 @@ function multiFunc() {
     console.log(inputObjects)
    inputObjects.type = "multiply";
    inputNumbers();
-   postIt();
+//    postIt();
    }
 
 function divisionFunc() {
     console.log(inputObjects)
    inputObjects.type = "divide";
    inputNumbers();
-   postIt();
+//    postIt();
    }
 
 function clearFunc() {
@@ -57,17 +72,7 @@ function clearFunc() {
 
 
 //AJAX post next.
-function postIt() {
-   $.ajax({
-       method: 'POST',
-       url: '/calc',
-       data: {total_object: inputObjects},
-       success: function(response){
-           console.log('Finally in the Post', inputObjects)
 
-       }
-   });
-}
 
 
 //Next step, build the calculator function in the server

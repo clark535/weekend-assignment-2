@@ -10,9 +10,9 @@ console.log('starting up the server');
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/calc', function(req, res){
-    res.send('returned calc from server');
-    //res.send(numberCruncher({total_object: inputObjects}));
+app.post('/calc', function(req, res){
+    var response = numberCruncher(req.body.total_object);
+    res.send(response.toString());
 });
 
 //this is where the objects will be sent to, calculated and sent back to client.js side.
