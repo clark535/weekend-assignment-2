@@ -1,11 +1,11 @@
-// var express = require('express');
+//var express = require('express');
 // var bodyParser = require('body-parser');
-// var app = express();
+ //var app = express();
 // var additionPost = require('./routes/selectionsRouter');
 
 
 function numberCruncher(object) {
-    if (object.inputObjects == "add") {
+    if (object.text == "add") {
         return Number(object.x) + Number(object.y);
     } else if (object.inputObjects == "subtract") {
         return Number(object.x) - Number(object.y);

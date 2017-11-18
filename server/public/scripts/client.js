@@ -25,7 +25,7 @@ function postIt() {
        data: {total_object: inputObjects},
        success: function(response){
            console.log('Finally in the Post', inputObjects)
-            $('#equalsBox').html('Equals: ' + response);
+            $('#equalsBox').html('Equals: ' + inputObjects);
        }
    });
 }
