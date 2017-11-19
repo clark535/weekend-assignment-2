@@ -10,7 +10,7 @@ function numberCruncher(object) {
     } else if (object.type == "subtract") {
         return Number(object.x) - Number(object.y);
     } else if (object.type == "multiply") {
-        return Number(object.x) * Number(object.x);
+        return Number(object.x) * Number(object.y);
     } else if (object.type == "divide") {
         return Number(object.x) / Number(object.y);
     }
