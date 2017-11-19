@@ -5,13 +5,13 @@
 
 
 function numberCruncher(object) {
-    if (object.text == "add") {
+    if (object.type == "add") {
         return Number(object.x) + Number(object.y);
-    } else if (object.inputObjects == "subtract") {
+    } else if (object.type == "subtract") {
         return Number(object.x) - Number(object.y);
-    } else if (object.inputObjects == "multiply") {
+    } else if (object.type == "multiply") {
         return Number(object.x) * Number(object.x);
-    } else if (object.inputObjects == "divide") {
+    } else if (object.type == "divide") {
         return Number(object.x) / Number(object.y);
     }
 }

@@ -6,8 +6,9 @@ var inputObjects = {
     type: ""
 }
 //this file for listeners, button functions and AJAX
+$(document).ready(readyNow);
 
-$(document).ready(function(){
+function readyNow() {
     console.log('jQuery has been loaded');
 
 $(document).on('click', '#additionButton', addFunc);
@@ -17,6 +18,13 @@ $(document).on('click', '#divisionButton', divisionFunc);
 $(document).on('click', '#calculateButton', postIt);
 $('#clearButton').on('click', clearFunc);
 
+
+function inputNumbers() {
+    inputObjects.x = $('#inputOne').val();
+    inputObjects.y = $('#inputTwo').val();
+    // postIt();
+}
+
 function postIt() {
     //inputNumbers();
    $.ajax({
@@ -25,15 +33,9 @@ function postIt() {
        data: {total_object: inputObjects},
        success: function(response){
            console.log('Finally in the Post', inputObjects)
-            $('#equalsBox').html('Equals: ' + inputObjects);
+            $('#equalsBox').html('<p>' + 'Equals: ' + response + '</p>');
        }
    });
-}
-
-function inputNumbers() {
-    inputObjects.x = $('#inputOne').val();
-    inputObjects.y = $('#inputTwo').val();
-    // postIt();
 }
 
 function addFunc() {
@@ -66,61 +68,15 @@ function divisionFunc() {
    }
 
 function clearFunc() {
+    //readyNow();
     $('#inputOne').val('');
     $('#inputTwo').val('');
+    $('#equalsBox').children().remove();
 }
-
-
 //AJAX post next.
 
 
 
 //Next step, build the calculator function in the server
 
-
-
-
-
-// $('#newQuoteButton').on('click', function(){
-//     console.log('something!');
-//     $.ajax({
-//         method: 'POST',
-//         url: '/quote/new',
-//         data: {quote_to_add: $('#inputQuote').val()},
-//         success: function(response) {
-//             console.log('a new quote post response:', response);
-//             //get request for all of the quotes
-//             getAllQuotes();
-//         }
-//     });
-    
-// });
-
-// function calculator({x:"", y:  }) {
-//     if ({type: "Add"}) {
-//         console.log({x: + y: });        
-//     } else if ("type" == "Subtract") {
-//         x - y;
-//     } else if ("type" == "Multiply") {
-//         x * y;
-//     } else if ("type" == "Divide") {
-//         x / y;
-//     }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-});
+};
