@@ -5,6 +5,8 @@ var inputObjects = {
     y: 0,
     type: ""
 }
+
+var historyArray = [];
 //this file for listeners, button functions and AJAX
 $(document).ready(readyNow);
 
@@ -22,6 +24,7 @@ $('#clearButton').on('click', clearFunc);
 function inputNumbers() {
     inputObjects.x = $('#inputOne').val();
     inputObjects.y = $('#inputTwo').val();
+    historyArray.push(inputObjects);
     // postIt();
 }
 
@@ -32,8 +35,13 @@ function postIt() {
        url: '/calc',
        data: {total_object: inputObjects},
        success: function(response){
-           console.log('Finally in the Post', inputObjects)
+           console.log('Finally in the Post', inputObjects)           
             $('#equalsBox').html('<p>' + 'Equals: ' + response + '</p>');
+            for (var i = 0; i < response.historyArray.length; i++) {
+            $('#history').append('<p>' + response.inputObjects[i].x + '' + response.inputObjects[i].y + '' + response.inputObjects[i].type + '=' + response.inputObjects[i].result + '</p>');
+                
+                
+            }
        }
    });
 }

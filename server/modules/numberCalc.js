@@ -1,7 +1,4 @@
-//var express = require('express');
-// var bodyParser = require('body-parser');
- //var app = express();
-// var additionPost = require('./routes/selectionsRouter');
+
 
 
 function numberCruncher(object) {
@@ -14,6 +11,8 @@ function numberCruncher(object) {
     } else if (object.type == "divide") {
         return Number(object.x) / Number(object.y);
     }
+
+   
 }
 
 module.exports = numberCruncher;
